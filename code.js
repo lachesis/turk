@@ -49,7 +49,7 @@ function GetCoordinates(e)
 
 $(document).ready(function(){
   $('img').on('dragstart', function(event) { event.preventDefault(); });
-  $('#click-image').attr('src', getQueryVariable('img'));
+  $('#click-image').attr('src', unescape(getQueryVariable('img')));
   $("#click-image")[0].onmousedown=GetCoordinates;
 });
 
