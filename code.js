@@ -79,40 +79,17 @@ function getQueryVariable(variable) {
 }
 
 function postPoints(){
-  var vars = [], hash;
-  var q = document.URL.split('?')[1];
-  if(q != undefined){
-    q = q.split('&');
-    for(var i = 0; i < q.length; i++){
-      hash = q[i].split('=');
-      vars.push(hash[1]);
-      vars[hash[0]] = hash[1];
-    }
-  }
+  var assignmentId = getQueryVariable('assignmentId');
+  if(assignmentId == "ASSIGNMENT_ID_NOT_AVAILABLE")
+    return false; //its a preview
 
-  var assignmentId = hash['assignmentId'];
-  if(assignmentId == "ASSIGNMENT_ID_NOT_AVAILABLE") return; //its a preview
   var data = {
     points: getPoints(),
-    hitId: hash['hitId']
+    hitId: getQueryVariable('hitId')
   };
 
-  //do something better here!
+  $("#data").val(JSON.stringify(data));
+  $("#assignmentId").val(assignmentId);
 
-  /*
-  $.ajax(
-    {
-        url: "http://www.mturk.com/mturk/externalSubmit?assignmentId=" + assignmentId,
-        type: "POST",
-        data: {data:JSON.stringify(data)},
-        success:function(data, textStatus, jqXHR) 
-        {
-            console.log('posted!')
-        },
-        error: function(jqXHR, textStatus, errorThrown) 
-        {
-            console.log('posted! failed!')    
-        }
-    });
-  */
+  $("#mturkForm").submit();
 }
