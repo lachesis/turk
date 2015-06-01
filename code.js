@@ -20,24 +20,22 @@ function GetCoordinates(e)
   var PosY = 0;
   var ImgPos;
   ImgPos = FindPosition($("#click-image")[0]);
-  if (!e) e = window.event;
+  if (!e) { e = window.event };
   if (e.pageX || e.pageY)
   {
     PosX = e.pageX;
     PosY = e.pageY;
   }
   else if (e.clientX || e.clientY)
-    {
-      PosX = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-      PosY = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-    }
+  {
+    PosX = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+    PosY = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+  }
   PosX = PosX - ImgPos[0];
   PosY = PosY - ImgPos[1];
-  console.log(PosX);
-  console.log(PosY);
   var newEle = $('<div class="point"></div>');
-  newEle.css("width", "100px");
-  newEle.css("height", "100px");
+  newEle.css("width", (getQueryVariable("radius") || 50) + "px");
+  newEle.css("height", (getQueryVariable("radius") || 50) + "px");
   newEle.css("left", (PosX - newEle.width()/2)+"px");
   newEle.css("top", (PosY - newEle.height()/2)+"px");
   newEle.click(function(ele){
@@ -75,14 +73,14 @@ function getQueryVariable(variable) {
             return decodeURIComponent(pair[1]);
         }
     }
-    console.log('Query variable %s not found', variable);
     return null;
 }
 
 function postPoints(){
   var assignmentId = getQueryVariable('assignmentId');
-  if(assignmentId == "ASSIGNMENT_ID_NOT_AVAILABLE")
+  if(assignmentId == "ASSIGNMENT_ID_NOT_AVAILABLE") {
     return false; //its a preview
+  }
 
   var data = {
     points: getPoints(),
