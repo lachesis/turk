@@ -7,8 +7,16 @@
   <title>turk</title>
 <script src="code.js"></script>
 <link rel="stylesheet" type="text/css" href="code.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 </head>
 <body>
+	<div style="font-size:32px; padding: 15px;">
+	  <ul>
+	  	<li>Click on all the cars and trucks in the image</li>
+	  	<li>When you are done click submit</li>
+	  	<li>Clicking on a yellow marker will remove the marker</li>
+	  </ul>
+	</div>
 	<div id="container" style="position: relative;">
     <img class="unselectable" id="click-image">
   </div>
@@ -16,6 +24,6 @@
       <input type="hidden" name="assignmentId" id="assignmentId" />
       <input type="hidden" name="data" id="data" />
   </form>
-  <button style="font-size:32px;" onclick="postPoints()">Submit Work</button>
+  <button style="font-size:32px; padding:15px;" onclick="postPoints()">Submit Hit!</button>
 </body>
 </html>

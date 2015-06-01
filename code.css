@@ -1,3 +1,4 @@
+/*Real CSS*/
 .unselectable {
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
@@ -5,7 +6,6 @@
     -o-user-select: none;
     user-select: none;
 }
-
 .point {
 	opacity: 0.5;
 	border-radius: 10000px;
